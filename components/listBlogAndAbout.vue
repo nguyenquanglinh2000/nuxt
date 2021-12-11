@@ -1,0 +1,65 @@
+<template>
+  <div class="listAndAbout">
+    <div class="list">
+      <v-container>
+        <span>Blog Me</span>
+      </v-container>
+    </div>
+    <div class="about">
+      <v-container>
+        <span>About Me</span>
+        <div class="contentAbout">
+          <v-img
+            loading="lazy"
+            src="https://albert-schilling.github.io/personal-website/2019-Portrait-Albert-Schilling-square-900px.a449945e.jpg"
+            max-width="300"
+            class="mt-16"
+          />
+        </div>
+        <p>
+          I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. I’m a great place for you to tell a story and let your users know a little more about you.
+        </p>
+        <nuxt-link to="/about" tag="a" class="mx-16">
+          Read More >
+        </nuxt-link>
+      </v-container>
+    </div>
+  </div>
+</template>
+<style scoped>
+.listAndAbout{
+    width: 100%;
+    display: flex;
+    margin-top: 3rem;
+}
+.list{
+    min-width: 60%;
+    text-align: center;
+}
+.about{
+    min-width: 40%;
+    text-align: center;
+    border-left: 1px solid black;
+    /* display: flex; */
+    /* justify-content: center; */
+}
+.contentAbout{
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    margin-bottom: 3rem;
+}
+
+span {
+    font-size: 25px;
+    font-family: 'Readex Pro', sans-serif;
+    letter-spacing:0.4em;
+}
+.about a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: #6f64ea;
+}
+</style>

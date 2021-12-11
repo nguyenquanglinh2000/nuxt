@@ -52,7 +52,7 @@ export default {
             email: this.email,
             password: this.password
           })
-          .then(() => this.$router.push('/blogs'))
+          .then(() => this.$router.push('/profile'))
           .catch((e) => {
             if (e) {
               this.messeger = 'Email or password is invalid'

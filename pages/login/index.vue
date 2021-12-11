@@ -46,7 +46,7 @@ export default {
         .then((result) => {
           // console.log(result)
           if (result.success) {
-            this.$router.push('/blogs')
+            this.$router.push('/profile')
           }
         })
         .catch((e) => {

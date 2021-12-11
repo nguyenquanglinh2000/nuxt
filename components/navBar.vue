@@ -1,50 +1,70 @@
 <template>
-  <v-card flat>
-    <v-toolbar>
+  <!-- <v-card> -->
+  <div class="nav_bar">
+    <intro />
+    <v-toolbar height="120">
       <div class="nav">
         <ul>
-          <li>
+          <li style="border-left: 1px solid black;">
             <nuxt-link tag="a" to="/">
               Home
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link tag="a" to="/blogs">
-              Blog
+            <nuxt-link tag="a" to="/profile">
+              About
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link tag="a" to="/profile">
-              Profile
+            <nuxt-link tag="a" to="/blogs">
+              MyBlog
             </nuxt-link>
           </li>
+          <li>
+            <nuxt-link tag="a" to="/contact">
+              Contact
+            </nuxt-link>
+          </li>
+          <li>
+            <v-text-field placeholder="Search..." color="black" hide-details prepend-icon="mdi-magnify" />
+          </li>
+          <contact />
         </ul>
       </div>
     </v-toolbar>
-  </v-card>
+  <!-- </v-card> -->
+  </div>
 </template>
 <style scoped>
 .nav{
     min-width: 100%;
+    /* background: rgb(200, 200, 200); */
 }
 ul {
   list-style-type: none;
   text-align: center;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
 }
 li {
   display: inline-block;
-  width: 120px;
-  height: 40px;
-  line-height: 40px;
-  margin-left: -5px;
+  /* width: 120px; */
+  /* height: 40px; */
+  /* line-height: 40px; */
+  /* margin-left: -5px; */
 }
 ul li a {
   text-decoration: none;
   color: black;
   display: block;
-  font-size: 30px;
+  font-size: 20px;
+  padding: 10px 50px;
+  border-right: 1px solid black;
 }
 a:hover {
-  background: #F1F1F1;
+  color: mediumpurple;
+}
+a.nuxt-link-exact-active {
+  color: mediumpurple;
 }
 </style>
