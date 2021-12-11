@@ -3,6 +3,85 @@
     <div class="list">
       <v-container>
         <span>Blog Me</span>
+        <div class="post mt-16">
+          <v-card width="700" flat class="item">
+            <v-row>
+              <v-col cols="6">
+                <v-img
+                  src="https://albert-schilling.github.io/personal-website/2019-Portrait-Albert-Schilling-square-900px.a449945e.jpg"
+                  loading="lazy"
+                />
+              </v-col>
+              <v-col cols="6">
+                <nuxt-link to="">
+                  <v-card-title><h3>Amsterdam 101: Redefining The French Fries</h3></v-card-title>
+                  <v-card-subtitle>Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading....</v-card-subtitle>
+                </nuxt-link>
+                <v-divider />
+              </v-col>
+            </v-row>
+          </v-card>
+        </div>
+
+        <div class="post mt-16">
+          <v-card width="700" flat class="item">
+            <v-row>
+              <v-col cols="6">
+                <v-img
+                  src="https://albert-schilling.github.io/personal-website/2019-Portrait-Albert-Schilling-square-900px.a449945e.jpg"
+                  loading="lazy"
+                />
+              </v-col>
+              <v-col cols="6">
+                <nuxt-link to="">
+                  <v-card-title><h3>Amsterdam 101: Redefining The French Fries</h3></v-card-title>
+                  <v-card-subtitle>Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading....</v-card-subtitle>
+                </nuxt-link>
+                <v-divider />
+              </v-col>
+            </v-row>
+          </v-card>
+        </div>
+
+        <div class="post mt-16">
+          <v-card width="700" flat class="item">
+            <v-row>
+              <v-col cols="6">
+                <v-img
+                  src="https://albert-schilling.github.io/personal-website/2019-Portrait-Albert-Schilling-square-900px.a449945e.jpg"
+                  loading="lazy"
+                />
+              </v-col>
+              <v-col cols="6">
+                <nuxt-link to="">
+                  <v-card-title><h3>Amsterdam 101: Redefining The French Fries</h3></v-card-title>
+                  <v-card-subtitle>Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading....</v-card-subtitle>
+                </nuxt-link>
+                <v-divider />
+              </v-col>
+            </v-row>
+          </v-card>
+        </div>
+
+        <div class="post mt-16">
+          <v-card width="700" flat class="item">
+            <v-row>
+              <v-col cols="6">
+                <v-img
+                  src="https://albert-schilling.github.io/personal-website/2019-Portrait-Albert-Schilling-square-900px.a449945e.jpg"
+                  loading="lazy"
+                />
+              </v-col>
+              <v-col cols="6">
+                <nuxt-link to="">
+                  <v-card-title><h3>Amsterdam 101: Redefining The French Fries</h3></v-card-title>
+                  <v-card-subtitle>Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading....</v-card-subtitle>
+                </nuxt-link>
+                <v-divider />
+              </v-col>
+            </v-row>
+          </v-card>
+        </div>
       </v-container>
     </div>
     <div class="about">
@@ -49,7 +128,19 @@
     max-width: 100%;
     margin-bottom: 3rem;
 }
-
+.list{
+}
+.post {
+  display: flex;
+  justify-content: center;
+}
+.item {
+    border: 1px solid black;
+}
+.item a{
+    text-decoration: none;
+    color:black;
+}
 span {
     font-size: 25px;
     font-family: 'Readex Pro', sans-serif;

@@ -15,7 +15,7 @@
 </template>
 <script>
 export default {
-  // layout: 'blogLayout',
+  layout: 'blogLayout',
   computed: {
     blogs () {
       return this.$store.state.listBlog

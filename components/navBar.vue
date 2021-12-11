@@ -26,7 +26,7 @@
             </nuxt-link>
           </li>
           <li>
-            <v-text-field placeholder="Search..." color="black" hide-details prepend-icon="mdi-magnify" />
+            <v-text-field placeholder="Search..." color="pink" prepend-icon="mdi-magnify" hide-details/>
           </li>
           <contact />
         </ul>

@@ -1,5 +1,5 @@
 <template>
-  <v-app dark class="main">
+  <v-app class="main">
     <v-main>
       <nav-bar />
       <v-container>
@@ -7,6 +7,7 @@
       </v-container>
       <subscribe />
       <list-blog-and-about />
+      <my-footer />
     </v-main>
   </v-app>
 </template>

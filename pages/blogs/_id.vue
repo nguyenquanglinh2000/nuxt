@@ -10,7 +10,7 @@
 </template>
 <script>
 export default {
-  // layout: 'blogLayout',
+  layout: 'blogLayout',
   data () {
     return {
       id: this.$route.params.id
