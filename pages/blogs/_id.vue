@@ -1,16 +1,22 @@
 <template>
-  <div>
-    <v-card class="mx-auto">
-      <!-- <v-img class="blog" :src="blogs.image" max-height="1200" max-width="1500" /> -->
-      <v-card-title>{{ blogs.title }}</v-card-title>
-      <v-card-text>{{ blogs.description }}</v-card-text>
-    </v-card>
-    <!-- <p>{{ blogs.image }}</p> -->
+  <div class="blog-detailt">
+    <div class="blog-inline">
+      <v-card class="mx-auto" flat>
+        <v-card-title style="font-weight: 700; font-size: 50px;" class="mx-3">
+          {{ blogs.title }}
+        </v-card-title>
+        <v-card-text style="font-weight: 700; font-size: 17px; color:black" class="mx-3">
+          {{ blogs.description }}
+        </v-card-text>
+        <v-img class="blog" :src="blogs.image" max-height="600" contain />
+        <p>Something</p>
+      </v-card>
+    </div>
   </div>
 </template>
 <script>
 export default {
-  layout: 'blogLayout',
+  layout: 'layout',
   data () {
     return {
       id: this.$route.params.id
@@ -32,5 +38,14 @@ export default {
 .blog {
   display: flex;
   justify-content: center;
+}
+.blog-detailt {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.blog-inline {
+  width: 50%;
+  border: 1px solid black;
 }
 </style>

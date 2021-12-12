@@ -107,30 +107,6 @@ export default {
   //   }
   // },
   methods: {
-    createBlog () {
-      if (!this.$store.getters.getToken) {
-        this.$router.push('/login')
-      }
-      // eslint-disable-next-line eqeqeq
-      if (
-        this.title.length + this.description.length + this.image.length <=
-        3
-      ) {
-        this.messege = 'Please enter full information'
-      } else {
-        this.$store.dispatch('CREATEBLOG', {
-          title: this.title,
-          description: this.description,
-          image: this.image,
-          author: this.$store.state.emailAuth
-        })
-        this.dialog = false
-        alert('Create Successful')
-      }
-    },
-    logout () {
-      this.$store.dispatch('LOGOUT').then(this.$router.push('/profile'))
-    },
     handle (id) {
       // console.log(id)
       if (id === 1) {

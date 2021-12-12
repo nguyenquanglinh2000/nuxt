@@ -2,7 +2,7 @@
   <!-- <v-card> -->
   <div class="nav_bar">
     <intro />
-    <v-toolbar height="120">
+    <v-toolbar height="120" flat>
       <div class="nav">
         <ul>
           <li style="border-left: 1px solid black;">
@@ -11,7 +11,7 @@
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link tag="a" to="/profile">
+            <nuxt-link tag="a" to="/about">
               About
             </nuxt-link>
           </li>
@@ -26,7 +26,7 @@
             </nuxt-link>
           </li>
           <li>
-            <v-text-field placeholder="Search..." color="pink" prepend-icon="mdi-magnify" hide-details/>
+            <v-text-field placeholder="Search..." color="pink" prepend-icon="mdi-magnify" hide-details />
           </li>
           <contact />
         </ul>
