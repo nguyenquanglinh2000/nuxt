@@ -67,6 +67,7 @@ const store = () => {
                 author: payload.author
               }
             )
+          context.dispatch('get_data')
           return {
             check: true,
             alert: 'Create success'
@@ -78,13 +79,41 @@ const store = () => {
             alert: 'Create false ' + error
           }
         }
-
-        // .then((data) => {
-        //   // console.log('Create: ', data)
-        // })
-        // .catch((e) => {
-        //   // console.log(e)
-        // })
+      },
+      async delete_data (context, payload) {
+        // console.log(payload)
+        try {
+          await this.$axios.$delete('https://blognuxt-886ad-default-rtdb.firebaseio.com/blogs/' + payload + '.json/?auth=' +
+          context.state.token)
+          context.dispatch('get_data')
+          return {
+            result: true
+          }
+        } catch (error) {
+          return {
+            result: false,
+            err: error
+          }
+        }
+      },
+      async update_data (context, payload) {
+        try {
+          await this.$axios.$patch('https://blognuxt-886ad-default-rtdb.firebaseio.com/blogs/' + payload.id + '.json/?auth=' +
+          context.state.token, {
+            title: payload.title,
+            description: payload.description,
+            image: payload.image
+          })
+          context.dispatch('get_data')
+          return {
+            result: true
+          }
+        } catch (error) {
+          return {
+            result: false,
+            err: error
+          }
+        }
       },
       get_data (context) {
         return this.$axios
@@ -97,13 +126,14 @@ const store = () => {
                 title: result[key].title,
                 description: result[key].description,
                 image: result[key].image,
+                favorite: result[key].favorite,
                 author: result[key].author,
                 id: key
               })
             }
             // console.log(array)
             context.commit('UPDATE_LIST', array)
-            // console.log('get_data')
+            console.log('get_data')
           })
           .catch((e) => {
             // eslint-disable-next-line no-console
@@ -113,6 +143,23 @@ const store = () => {
       logout ({ commit }) {
         commit('LOGOUT')
         this.$router.push('/login')
+      },
+      async change_favorite (context, payload) {
+        try {
+          await this.$axios.$patch('https://blognuxt-886ad-default-rtdb.firebaseio.com/blogs/' + payload.id + '.json/?auth=' +
+          context.state.token, {
+            favorite: !payload.favorite
+          })
+          context.dispatch('get_data')
+          return {
+            result: true
+          }
+        } catch (error) {
+          return {
+            result: false,
+            err: error
+          }
+        }
       }
     },
 

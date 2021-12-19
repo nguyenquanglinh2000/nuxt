@@ -99,8 +99,8 @@ export default {
       drawer: true,
       items: [
         { title: 'Dashboard', icon: 'mdi-view-dashboard', link: '/admin/dashboard' },
-        { title: 'My Post', icon: 'mdi-post-outline', link: '/admin/post' },
-        { title: 'Users', icon: 'mdi-account-group-outline', link: '/admin/user' }
+        { title: 'My Post', icon: 'mdi-post-outline', link: '/admin/post' }
+        // { title: 'Users', icon: 'mdi-account-group-outline', link: '/admin/user' }
       ],
       menuDropDown: [
         { title: 'Profile', icon: 'mdi-account', color: 'black', to: '/admin/profile' }
@@ -116,7 +116,7 @@ export default {
   },
   methods: {
     logout () {
-      console.log(this.emailAuth)
+      // console.log(this.emailAuth)
     }
   }
 }

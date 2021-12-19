@@ -1,13 +1,5 @@
 <template>
   <div class="dialog">
-    <!-- <v-btn @click="dialog=true">
-      click
-    </v-btn> -->
-    <v-btn icon color="pink" @click="dialog=true">
-      <v-icon x-large>
-        mdi-plus
-      </v-icon>
-    </v-btn>
     <v-dialog v-model="dialog" width="500">
       <v-card>
         <v-card-text style="color: red; text-align: center">
@@ -88,11 +80,9 @@ export default {
           image: this.image,
           author: this.emailAuth
         }).then((result) => {
-          console.log(result.check + result.alert)
           if (result.check) {
             this.dialog = false
             alert('Create Successful')
-            this.$store.dispatch('get_data')
           } else {
             alert(result.alert)
           }
