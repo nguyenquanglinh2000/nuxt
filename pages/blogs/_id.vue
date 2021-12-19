@@ -15,22 +15,23 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
-  layout: 'layout',
   data () {
     return {
       id: this.$route.params.id
     }
   },
   computed: {
+    ...mapState(['listBlog']),
     blogs () {
-      return this.$store.state.listBlog.find((blog) => {
+      return this.listBlog.find((blog) => {
         return blog.id === this.id
       })
     }
   },
   created () {
-    this.$store.dispatch('GET_DATA')
+    this.$store.dispatch('get_data')
   }
 }
 </script>

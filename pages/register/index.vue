@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card class="card-form px-5 py-5" width="600" color="#c8c8c887">
+    <v-card class="card-form px-5 py-5" width="600" flat>
       <v-card-title>Register</v-card-title>
       <v-form @submit.prevent="onSubmit">
         <v-card-subtitle v-if="messeger" style="color: red">
@@ -48,13 +48,14 @@ export default {
       } else {
         // console.log('Run onSubmit')
         this.$store
-          .dispatch('AUTHENTICATE', {
+          .dispatch('authenticate', {
             email: this.email,
             password: this.password
           })
-          .then(() => this.$router.push('/profile'))
-          .catch((e) => {
-            if (e) {
+          .then((reusult) => {
+            if (reusult) {
+              this.$router.push('/admin/dashboard')
+            } else {
               this.messeger = 'Email or password is invalid'
             }
           })

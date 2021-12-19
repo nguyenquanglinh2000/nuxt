@@ -19,13 +19,13 @@
                 <dialog-create />
               </v-card-actions>
             </v-col>
-            <v-col cols="1">
+            <!-- <v-col cols="1">
               <v-card-actions>
-                <v-btn color="#9e9e9e" @click="logout">
+                <v-btn color="#9e9e9e" @click="logOut">
                   <v-icon>mdi-export</v-icon>
                 </v-btn>
               </v-card-actions>
-            </v-col>
+            </v-col> -->
           </v-row>
         </v-card>
       </v-col>
@@ -51,7 +51,9 @@
                 :key="indexMenu"
                 @click="handle(itemMenu.id)"
               >
-                <v-list-item-title>{{ itemMenu.item }}</v-list-item-title>
+                <v-list-item-title>
+                  {{ itemMenu.item }}
+                </v-list-item-title>
               </v-list-item>
             </v-list>
           </v-menu>
@@ -70,9 +72,10 @@
   </div>
 </template>
 <script>
-// import auth from 'middleware/auth'
+import { mapState, mapGetters } from 'vuex'
 export default {
   middleware: 'auth',
+
   data () {
     return {
       items: [
@@ -88,17 +91,12 @@ export default {
     }
   },
   computed: {
-    blogAuth () {
-      // console.log('Run blogAuth')
-      return this.$store.state.listBlog.filter((blog) => {
-        // console.log('Blog:', blog)
-        // console.log('email: ', this.$store.state.emailAuth)
-        return blog.author === this.$store.state.emailAuth
-      })
-    }
+    ...mapState(['listBlog']),
+    // ...mapActions(['logout']),
+    ...mapGetters(['blogAuth'])
   },
   created () {
-    this.$store.dispatch('GET_DATA')
+    this.$store.dispatch('get_data')
   },
   // watch: {
   //   dialog (newC, oldC) {
@@ -116,6 +114,9 @@ export default {
       }
       // this.$router.push('/')
     }
+    // logOut () {
+    //   this.$store.dispatch('logout')
+    // }
   }
 }
 </script>

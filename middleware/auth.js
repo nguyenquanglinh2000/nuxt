@@ -1,5 +1,5 @@
 export default function (context) {
-  if (!context.store.getters.getToken) {
+  if (context.store.state.token === null) {
     context.redirect('/login')
   }
 }

@@ -1,12 +1,14 @@
 <template>
   <div class="dialog">
+    <!-- <v-btn @click="dialog=true">
+      click
+    </v-btn> -->
+    <v-btn icon color="pink" @click="dialog=true">
+      <v-icon x-large>
+        mdi-plus
+      </v-icon>
+    </v-btn>
     <v-dialog v-model="dialog" width="500">
-      <template #activator="{ on, attrs }">
-        <v-btn v-bind="attrs" color="success" v-on="on">
-          Create Article
-        </v-btn>
-      </template>
-
       <v-card>
         <v-card-text style="color: red; text-align: center">
           {{ messege }}
@@ -39,11 +41,9 @@
             class="mx-5"
             placeholder="Link Image"
           />
-          <!-- <v-card-actions> -->
           <v-btn type="submit" color="success" class="mx-5 my-5">
             Create
           </v-btn>
-          <!-- </v-card-actions> -->
         </v-form>
 
         <v-divider />
@@ -59,6 +59,7 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -69,11 +70,11 @@ export default {
       messege: ''
     }
   },
+  computed: {
+    ...mapState(['emailAuth'])
+  },
   methods: {
     createBlog () {
-      if (!this.$store.getters.getToken) {
-        this.$router.push('/login')
-      }
       // eslint-disable-next-line eqeqeq
       if (
         this.title.length + this.description.length + this.image.length <=
@@ -81,18 +82,22 @@ export default {
       ) {
         this.messege = 'Please enter full information'
       } else {
-        this.$store.dispatch('CREATEBLOG', {
+        this.$store.dispatch('create_blog', {
           title: this.title,
           description: this.description,
           image: this.image,
-          author: this.$store.state.emailAuth
+          author: this.emailAuth
+        }).then((result) => {
+          console.log(result.check + result.alert)
+          if (result.check) {
+            this.dialog = false
+            alert('Create Successful')
+            this.$store.dispatch('get_data')
+          } else {
+            alert(result.alert)
+          }
         })
-        this.dialog = false
-        alert('Create Successful')
       }
-    },
-    logout () {
-      this.$store.dispatch('LOGOUT').then(this.$router.push('/profile'))
     }
   }
 }

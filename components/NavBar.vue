@@ -21,7 +21,7 @@
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link tag="a" to="/contact">
+            <nuxt-link tag="a" to="/profile">
               Contact
             </nuxt-link>
           </li>

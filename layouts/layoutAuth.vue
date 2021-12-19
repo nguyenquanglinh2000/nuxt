@@ -1,16 +1,20 @@
 <template>
-  <v-app>
+  <v-app class="main">
     <v-main>
-      <nuxt-logo class="logo my-9" />
       <v-container>
-        <nuxt />
+        <nuxt-logo class="logo" />
+        <Nuxt />
       </v-container>
     </v-main>
   </v-app>
 </template>
+
 <style scoped>
 .logo{
     width: 100%;
     margin:auto
+}
+.main{
+  background-image: url(https://wallpaperaccess.com/full/16676.jpg);
 }
 </style>

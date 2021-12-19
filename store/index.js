@@ -9,51 +9,84 @@ const store = () => {
       emailAuth: ''
     },
     actions: {
-      AUTHENTICATE (context, payload) {
-        return new Promise((resolve, reject) => {
-          let apiAuth =
+      async authenticate (context, payload) {
+        // return new Promise((resolve, reject) => {
+        //   let apiAuth =
+        //     'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBJ3BZyypt-Rsmn49D9I0aMU8p7DygCWnI'
+        //   if (payload.isLogin) {
+        //     apiAuth =
+        //       'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBJ3BZyypt-Rsmn49D9I0aMU8p7DygCWnI'
+        //   }
+        //   this.$axios
+        //     .$post(apiAuth, {
+        //       email: payload.email,
+        //       password: payload.password,
+        //       returnSecureToken: true
+        //     })
+        //     .then((result) => {
+        //       // console.log(result.email)
+        //       context.commit('getAuth', result.email)
+        //       context.commit('SET_TOKEN', result.idToken)
+        //       resolve({ success: true })
+        //     })
+        //     .catch((error) => {
+        //       reject(error)
+        //     })
+        // })
+        let apiAuth =
             'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBJ3BZyypt-Rsmn49D9I0aMU8p7DygCWnI'
-          if (payload.isLogin) {
-            apiAuth =
+        if (payload.isLogin) {
+          apiAuth =
               'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBJ3BZyypt-Rsmn49D9I0aMU8p7DygCWnI'
-          }
-          this.$axios
+        }
+        try {
+          const result = await this.$axios
             .$post(apiAuth, {
               email: payload.email,
               password: payload.password,
               returnSecureToken: true
             })
-            .then((result) => {
-              // console.log(result.email)
-              context.commit('getAuth', result.email)
-              context.commit('setToken', result.idToken)
-              resolve({ success: true })
-            })
-            .catch((error) => {
-              reject(error)
-            })
-        })
+          context.commit('GET_AUTH', result.email)
+          context.commit('SET_TOKEN', result.idToken)
+          return true
+          // return console.log(result)
+        } catch (error) {
+          return false
+        }
       },
-      CREATEBLOG (context, payload) {
-        this.$axios
-          .$post(
-            'https://blognuxt-886ad-default-rtdb.firebaseio.com/blogs.json/?auth=' +
+      async create_blog (context, payload) {
+        try {
+          await this.$axios
+            .$post(
+              'https://blognuxt-886ad-default-rtdb.firebaseio.com/blogs.json/?auth=' +
               context.state.token,
-            {
-              title: payload.title,
-              description: payload.description,
-              image: payload.image,
-              author: payload.author
-            }
-          )
-          .then((data) => {
-            console.log('Create: ', data)
-          })
-          .catch((e) => {
-            console.log(e)
-          })
+              {
+                title: payload.title,
+                description: payload.description,
+                image: payload.image,
+                author: payload.author
+              }
+            )
+          return {
+            check: true,
+            alert: 'Create success'
+          }
+          // return console.log(result)
+        } catch (error) {
+          return {
+            check: false,
+            alert: 'Create false ' + error
+          }
+        }
+
+        // .then((data) => {
+        //   // console.log('Create: ', data)
+        // })
+        // .catch((e) => {
+        //   // console.log(e)
+        // })
       },
-      GET_DATA (context) {
+      get_data (context) {
         return this.$axios
           .$get('https://blognuxt-886ad-default-rtdb.firebaseio.com/blogs.json')
           .then((result) => {
@@ -69,36 +102,40 @@ const store = () => {
               })
             }
             // console.log(array)
-            context.commit('updateList', array)
-            console.log('GET_DATA')
+            context.commit('UPDATE_LIST', array)
+            // console.log('get_data')
           })
           .catch((e) => {
+            // eslint-disable-next-line no-console
             console.log(e)
           })
       },
-      LOGOUT (context) {
-        context.commit('logout')
+      logout ({ commit }) {
+        commit('LOGOUT')
+        this.$router.push('/login')
       }
     },
 
     mutations: {
-      setToken (state, payload) {
+      SET_TOKEN (state, payload) {
         state.token = payload
       },
-      updateList (state, payload) {
+      UPDATE_LIST (state, payload) {
         state.listBlog = payload
       },
-      logout (state) {
+      LOGOUT (state) {
         state.token = null
       },
-      getAuth (state, payload) {
+      GET_AUTH (state, payload) {
         state.emailAuth = payload
       }
     },
     getters: {
-      getToken (state) {
-        return state.token != null
-      }
+      // blogAuth (state) {
+      //   return state.listBlog.filter((blog) => {
+      //     return blog.author === state.emailAuth
+      //   })
+      // }
     }
   })
 }

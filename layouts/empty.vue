@@ -1,11 +1,16 @@
 <template>
   <v-app>
     <v-main class="main">
-      <nav-bar />
       <v-container>
+        <h1>Lỗi rồi bạn êii!!!</h1>
+        <v-img
+          src="http://www.setra.com/hubfs/Sajni/crc_error.jpg"
+          loading="lazy"
+          max-width="400"
+          max-height="600"
+        />
         <Nuxt />
       </v-container>
-      <my-footer />
     </v-main>
   </v-app>
 </template>
@@ -24,6 +29,8 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&display=swap');
 .main{
   font-family: 'Open Sans', sans-serif;
-  background-color: #ffffff;
+  background-color: #ffff;
+  text-align: center;
+  margin:auto
 }
 </style>

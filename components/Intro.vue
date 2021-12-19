@@ -1,7 +1,7 @@
 <template>
   <div class="intro">
     <span>EVERYTHING IS PERSONAL. INCLUDING THIS BLOG.</span>
-    <br/>
+    <br>
     <nuxt-link to="/" tag="a">
       Train of Thought
     </nuxt-link>
