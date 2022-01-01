@@ -1,13 +1,22 @@
 <template>
   <div class="dialog">
     <v-card>
-      <v-card-title style="font-size:30px">
+      <v-card-title style="font-size: 30px">
         Create Post
       </v-card-title>
       <v-card-text style="color: red; text-align: center">
         {{ messege }}
       </v-card-text>
-      <v-form @submit.prevent="createBlog">
+      <v-form
+        @submit.prevent="
+          create_blog({
+            title: title,
+            description: description,
+            image: image,
+            author: emailAuth
+          })
+        "
+      >
         <v-card-title class="text-h5 lighten-2">
           Title
         </v-card-title>
@@ -16,7 +25,7 @@
           outlined
           class="mx-5"
           placeholder="Title"
-          label="email"
+          label="Title"
         />
         <v-card-title class="text-h5 lighten-2">
           Description
@@ -56,7 +65,7 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -68,32 +77,33 @@ export default {
     }
   },
   computed: {
-    ...mapState(['emailAuth'])
+    ...mapState('auth', ['emailAuth'])
   },
   methods: {
-    createBlog () {
-      // eslint-disable-next-line eqeqeq
-      if (
-        this.title + this.description + this.image === ''
-      ) {
-        this.messege = 'Please enter full information'
-      } else {
-        this.$store.dispatch('create_blog', {
-          title: this.title,
-          description: this.description,
-          image: this.image,
-          author: this.emailAuth
-        }).then((result) => {
-          if (result.check) {
-            this.dialog = false
-            alert('Create Successful')
-            this.$router.push('/admin/post')
-          } else {
-            alert(result.alert)
-          }
-        })
-      }
-    }
+    ...mapActions('post', ['create_blog'])
+    // createBlog () {
+    //   // eslint-disable-next-line eqeqeq
+    //   if (this.title + this.description + this.image === '') {
+    //     this.messege = 'Please enter full information'
+    //   } else {
+    //     this.$store
+    //       .dispatch('create_blog', {
+    //         title: this.title,
+    //         description: this.description,
+    //         image: this.image,
+    //         author: this.emailAuth
+    //       })
+    //       .then((result) => {
+    //         if (result.check) {
+    //           this.dialog = false
+    //           alert('Create Successful')
+    //           this.$router.push('/admin/post')
+    //         } else {
+    //           alert(result.alert)
+    //         }
+    //       })
+    //   }
+    // }
   }
 }
 </script>

@@ -1,13 +1,6 @@
 <template>
   <div class="post">
     <v-spacer />
-    <div class="plus">
-      <v-btn icon color="pink" tag="a" to="/admin/post/create-post">
-        <v-icon x-large>
-          mdi-plus
-        </v-icon>
-      </v-btn>
-    </div>
 
     <v-card
       v-for="(item, index) in listBlog"
@@ -19,26 +12,24 @@
       flat
     >
       <v-card-title>
-        <v-btn v-if="item.favorite" color="yellow" icon @click="favoriteStart({id: item.id, favorite: item.favorite}) ">
-          <v-icon>
-            mdi-star
-          </v-icon>
+        <v-btn
+          v-if="item.favorite"
+          color="yellow"
+          icon
+          @click="change_favorite({ id: item.id, favorite: item.favorite })"
+        >
+          <v-icon> mdi-star </v-icon>
         </v-btn>
-        <v-btn v-else icon :disabled="favoriteNum == 3" @click="favoriteStart({id: item.id, favorite: item.favorite})">
-          <v-icon>
-            mdi-star
-          </v-icon>
+        <v-btn
+          v-else
+          icon
+          :disabled="favoriteNum == 3"
+          @click="change_favorite({ id: item.id, favorite: item.favorite })"
+        >
+          <v-icon> mdi-star </v-icon>
         </v-btn>
-        <!-- <v-btn v-else icon @click="favoriteStart({id: item.id, favorite: item.favorite})">
-          <v-icon v-if="item.favorite" color="yellow">
-            mdi-star
-          </v-icon>
-          <v-icon v-else>
-            mdi-star
-          </v-icon>
-        </v-btn> -->
         <v-spacer />
-        <v-menu>
+        <!-- <v-menu>
           <template #activator="{ on }">
             <v-btn icon color="black" v-on="on">
               <v-icon>mdi-dots-vertical</v-icon>
@@ -62,19 +53,41 @@
               </v-list-item-title>
             </v-list-item>
           </v-list>
-        </v-menu>
+        </v-menu> -->
+        <v-btn icon color="red" @click="delete_data(item.id)">
+          <v-icon>mdi-delete</v-icon>
+        </v-btn>
+        <v-btn
+          icon
+          color="blue"
+          @click="
+            handle({
+              idPost: item.id,
+              title: item.title,
+              description: item.description,
+              image: item.image
+            })
+          "
+        >
+          <v-icon>mdi-pencil</v-icon>
+        </v-btn>
       </v-card-title>
       <v-row>
         <v-col cols="4">
-          <v-img :src="item.image" loading="lazy" max-width="300" class="mx-3 mb-10" />
+          <v-img
+            :src="item.image"
+            loading="lazy"
+            max-width="300"
+            class="mx-3 mb-10"
+          />
         </v-col>
         <v-col cols="8">
           <nuxt-link :to="'/blogs/' + item.id">
-            <v-card-title style="color: #000; font-size:30px">
+            <v-card-title style="color: #000; font-size: 30px">
               {{ item.title }}
             </v-card-title>
           </nuxt-link>
-          <v-card-subtitle class="my-3" style="color: black;">
+          <v-card-subtitle class="my-3" style="color: black">
             {{ item.description }}
           </v-card-subtitle>
         </v-col>
@@ -84,10 +97,19 @@
     <div class="dialog">
       <v-dialog v-model="dialog" width="500">
         <v-card>
-          <v-card-text style="color: red; text-align: center">
+          <v-card-text style="color: yellow; text-align: center">
             {{ messege }}
           </v-card-text>
-          <v-form @submit.prevent="editPost">
+          <v-form
+            @submit.prevent="
+              update_data({
+                id: id,
+                title: title,
+                description: description,
+                image: image
+              })
+            "
+          >
             <v-card-title class="text-h5 lighten-2">
               Title
             </v-card-title>
@@ -135,21 +157,21 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   layout: 'admin',
   data () {
     return {
-      items: [
-        {
-          id: 1,
-          item: 'Edit'
-        },
-        {
-          id: 2,
-          item: 'Delete'
-        }
-      ],
+      // items: [
+      //   {
+      //     id: 1,
+      //     item: 'Edit'
+      //   },
+      //   {
+      //     id: 2,
+      //     item: 'Delete'
+      //   }
+      // ],
       dialog: false,
       title: '',
       description: '',
@@ -159,7 +181,8 @@ export default {
     }
   },
   computed: {
-    ...mapState(['listBlog', 'emailAuth']),
+    ...mapState('post', ['listBlog']),
+    ...mapState('auth', ['emailAuth']),
     favoriteNum () {
       const arr = this.listBlog.filter((favorite) => {
         return favorite.favorite === true
@@ -168,54 +191,29 @@ export default {
     }
   },
   methods: {
+    ...mapActions('post', ['delete_data', 'update_data', 'change_favorite']),
     handle (id) {
       // console.log(id)
-      if (id.id === 1) {
-        // Handle Edit
-        this.dialog = true
-        this.title = id.title
-        this.description = id.description
-        this.image = id.image
-        this.id = id.idPost
-      } else {
-        // Handle Delete
-        this.$store.dispatch('delete_data', id.idPost).then((result) => {
-          if (result.result) {
-            alert('Delete Success')
-          } else {
-            alert('Delete False, error is ', result.err)
-          }
-        })
-      }
-      // this.$router.push('/')
-    },
-    editPost () {
-      // eslint-disable-next-line eqeqeq
-      this.$store.dispatch('update_data', {
-        id: this.id,
-        title: this.title,
-        description: this.description,
-        image: this.image
-      }).then((result) => {
-        if (result.result) {
-          this.dialog = false
-          alert('Update Successful')
-        } else {
-          alert(result.err)
-        }
-      })
-    },
-    favoriteStart (id) {
-      this.$store.dispatch('change_favorite', id)
+      // if (id.id === 1) {
+      // Handle Edit
+      this.dialog = true
+      this.title = id.title
+      this.description = id.description
+      this.image = id.image
+      this.id = id.idPost
     }
-    // logOut () {
-    //   this.$store.dispatch('logout')
-    // }
   }
+  // favoriteStar (id) {
+  //   this.$store.dispatch('change_favorite', id)
+  // }
+  // logOut () {
+  //   this.$store.dispatch('logout')
+  // }
 }
+// }
 </script>
 <style scoped>
-.itemMenu :hover{
+.itemMenu :hover {
   background: #dfdfdf;
 }
 a {

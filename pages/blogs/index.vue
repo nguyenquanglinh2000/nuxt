@@ -2,9 +2,20 @@
   <div class="blogs">
     <div class="blog-list">
       <v-row>
-        <v-col v-for="(item, index) in blogs" :key="index" cols="6" class="blog mt-4">
+        <v-col
+          v-for="(item, index) in listBlog"
+          :key="index"
+          cols="6"
+          class="blog mt-4"
+        >
           <nuxt-link :to="'/blogs/' + item.id">
-            <v-card max-width="500" max-height="800" rounded flat class="card-blog">
+            <v-card
+              max-width="500"
+              max-height="800"
+              rounded
+              flat
+              class="card-blog"
+            >
               <v-img
                 :src="item.image"
                 max-height="600"
@@ -12,9 +23,14 @@
                 min-height="580"
                 contain
               />
-              <v-card-title><h2>{{ item.title }}</h2></v-card-title>
+              <v-card-title>
+                <h2>{{ item.title }}</h2>
+              </v-card-title>
 
-              <v-card-text tag="p" style="overflow: hidden;text-overflow: initial;">
+              <v-card-text
+                tag="p"
+                style="overflow: hidden; text-overflow: initial"
+              >
                 {{ item.description }}
               </v-card-text>
             </v-card>
@@ -28,13 +44,7 @@
 import { mapState } from 'vuex'
 export default {
   computed: {
-    ...mapState(['listBlog']),
-    blogs () {
-      return this.listBlog
-    }
-  },
-  created () {
-    this.$store.dispatch('get_data')
+    ...mapState(['listBlog'])
   }
 }
 </script>
@@ -47,7 +57,7 @@ export default {
 .blog-list {
   max-width: 60%;
 }
-.card-blog{
+.card-blog {
   border: 1px solid black;
   /* overflow: hidden;
   text-overflow: initial; */

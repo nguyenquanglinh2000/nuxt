@@ -1,12 +1,27 @@
 <template>
   <v-app>
-    <v-app-bar
-      fixed
-      app
-    >
+    <v-app-bar fixed app>
+      <div class="plus">
+        <v-btn icon color="pink" tag="a" to="/admin/post/create-post">
+          <v-icon x-large>
+            mdi-plus
+          </v-icon>
+        </v-btn>
+      </div>
+      <div class="star">
+        <v-btn icon color="yellow" @click="favoriteList">
+          <v-icon x-large>
+            mdi-star
+          </v-icon>
+        </v-btn>
+      </div>
+
       <v-spacer />
       <v-avatar class="mx-2">
-        <v-img src="https://randomuser.me/api/portraits/men/85.jpg" loading="lazy" />
+        <v-img
+          src="https://randomuser.me/api/portraits/men/85.jpg"
+          loading="lazy"
+        />
       </v-avatar>
       <v-app-bar-title>{{ emailAuth }}</v-app-bar-title>
       <v-menu offset-y class="mx-2">
@@ -16,18 +31,12 @@
           </v-btn>
         </template>
         <v-list class="bar">
-          <v-list-item
-            v-for="(item, index) in menuDropDown"
-            :key="index"
-          >
+          <v-list-item v-for="(item, index) in menuDropDown" :key="index">
             <v-list-item-title>
               <v-icon :color="item.color">
                 {{ item.icon }}
               </v-icon>
-              <nuxt-link
-                tag="a"
-                :to="item.to"
-              >
+              <nuxt-link tag="a" :to="item.to">
                 {{ item.title }}
               </nuxt-link>
             </v-list-item-title>
@@ -55,10 +64,7 @@
 
         <v-list-item-title>Admin</v-list-item-title>
 
-        <v-btn
-          icon
-          @click.stop="mini = !mini"
-        >
+        <v-btn icon @click.stop="mini = !mini">
           <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
       </v-list-item>
@@ -98,26 +104,37 @@ export default {
     return {
       drawer: true,
       items: [
-        { title: 'Dashboard', icon: 'mdi-view-dashboard', link: '/admin/dashboard' },
+        {
+          title: 'Dashboard',
+          icon: 'mdi-view-dashboard',
+          link: '/admin/dashboard'
+        },
         { title: 'My Post', icon: 'mdi-post-outline', link: '/admin/post' }
         // { title: 'Users', icon: 'mdi-account-group-outline', link: '/admin/user' }
       ],
       menuDropDown: [
-        { title: 'Profile', icon: 'mdi-account', color: 'black', to: '/admin/profile' }
+        {
+          title: 'Profile',
+          icon: 'mdi-account',
+          color: 'black',
+          to: '/admin/profile'
+        }
       ],
       mini: true
     }
   },
   computed: {
-    ...mapState(['emailAuth'])
+    ...mapState('auth', ['emailAuth'])
   },
   created () {
-    this.$store.dispatch('get_data')
+    // this.$store.dispatch('setTokenRoot')
+    this.$store.dispatch('post/get_data')
   },
   methods: {
     logout () {
       // console.log(this.emailAuth)
-    }
+    },
+    favoriteList () {}
   }
 }
 </script>
@@ -126,11 +143,11 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&display=swap');
-.main{
+.main {
   font-family: 'Open Sans', sans-serif;
   background-color: rgb(230, 230, 230);
 }
-.bar a{
+.bar a {
   text-decoration: none;
   color: black;
 }

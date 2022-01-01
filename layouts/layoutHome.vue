@@ -15,7 +15,8 @@
 <script>
 export default {
   created () {
-    this.$store.dispatch('get_data')
+    this.$store.dispatch('post/get_data')
+    this.$store.dispatch('setTokenRoot')
   }
 }
 </script>

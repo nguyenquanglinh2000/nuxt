@@ -6,17 +6,22 @@
           <v-container>
             <span>Blog Me</span>
             <div class="post mt-16">
-              <v-card v-for="(item, index) in favoriteList" :key="index" width="700" flat class="item my-16">
+              <v-card
+                v-for="(item, index) in favoriteList"
+                :key="index"
+                width="700"
+                flat
+                class="item my-16"
+              >
                 <v-row>
                   <v-col cols="6">
-                    <v-img
-                      :src="item.image"
-                      loading="lazy"
-                    />
+                    <v-img :src="item.image" loading="lazy" />
                   </v-col>
                   <v-col cols="6">
                     <nuxt-link to="">
-                      <v-card-title><h3>{{ item.title }}</h3></v-card-title>
+                      <v-card-title>
+                        <h3>{{ item.title }}</h3>
+                      </v-card-title>
                       <v-card-subtitle>{{ item.description }}</v-card-subtitle>
                     </nuxt-link>
                     <v-divider />
@@ -41,7 +46,11 @@
                 />
               </div>
               <p>
-                I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. I’m a great place for you to tell a story and let your users know a little more about you.
+                I'm a paragraph. Click here to add your own text and edit me.
+                It's easy. Just click “Edit Text” or double click me to add your
+                own content and make changes to the font. I’m a great place for
+                you to tell a story and let your users know a little more about
+                you.
               </p>
               <nuxt-link to="/about" tag="a" class="mx-16">
                 Read More >
@@ -58,7 +67,11 @@
                 />
               </div>
               <p>
-                I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. I’m a great place for you to tell a story and let your users know a little more about you.
+                I'm a paragraph. Click here to add your own text and edit me.
+                It’s easy. Just click “Edit Text” or double click me to add your
+                own content and make changes to the font. I’m a great place for
+                you to tell a story and let your users know a little more about
+                you.
               </p>
             </div>
             <div class="follow-me py-16">
@@ -108,7 +121,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['listBlog']),
+    ...mapState('post', ['listBlog']),
     favoriteList () {
       return this.listBlog.filter((post) => { return post.favorite === true })
     }
@@ -121,27 +134,27 @@ export default {
 }
 </script>
 <style scoped>
-.listAndAbout{
-    width: 100%;
-    display: flex;
-    margin-top: 3rem;
+.listAndAbout {
+  width: 100%;
+  display: flex;
+  margin-top: 3rem;
 }
-.list{
-    min-width: 60%;
-    text-align: center;
+.list {
+  min-width: 60%;
+  text-align: center;
 }
-.about{
-    min-width: 40%;
-    text-align: center;
-    border-left: 1px solid black;
-    /* display: flex; */
-    /* justify-content: center; */
+.about {
+  min-width: 40%;
+  text-align: center;
+  border-left: 1px solid black;
+  /* display: flex; */
+  /* justify-content: center; */
 }
-.imgAbout{
-    display: flex;
-    justify-content: center;
-    max-width: 100%;
-    margin-bottom: 3rem;
+.imgAbout {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  margin-bottom: 3rem;
 }
 .post {
   /* display: flex;
@@ -150,12 +163,13 @@ export default {
   margin: auto;
 }
 .item {
-    border: 1px solid black;
+  border: 1px solid black;
 }
-.item a{
-    text-decoration: none;
-    color:black;
-}.about-content{
+.item a {
+  text-decoration: none;
+  color: black;
+}
+.about-content {
   border-block-end: 1px solid black;
 }
 .pick-of-month {
@@ -172,15 +186,15 @@ export default {
   justify-content: center;
 } */
 span {
-    font-size: 25px;
-    font-family: 'Readex Pro', sans-serif;
-    letter-spacing:0.4em;
+  font-size: 25px;
+  font-family: 'Readex Pro', sans-serif;
+  letter-spacing: 0.4em;
 }
-.about a{
-    text-decoration: none;
-    color: black;
+.about a {
+  text-decoration: none;
+  color: black;
 }
-a:hover{
-    color: #6f64ea;
+a:hover {
+  color: #6f64ea;
 }
 </style>

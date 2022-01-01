@@ -1,28 +1,30 @@
 <template>
   <div>
     <v-card class="card-form px-5 py-5" width="600" flat>
-      <v-card-title>Register</v-card-title>
+      <v-card-title style="font-size:30px">Register</v-card-title>
       <v-form @submit.prevent="onSubmit">
         <v-card-subtitle v-if="messeger" style="color: red">
           {{ messeger }}
         </v-card-subtitle>
-        <v-text-field v-model="email" placeholder="User" type="email" />
+        <v-text-field v-model="email" label="User" type="email" color="yellow" />
         <v-text-field
           v-model="password"
-          placeholder="Password"
+          label="Password"
+          color="yellow"
           type="password"
         />
         <v-text-field
           v-model="re_password"
-          placeholder="Re-Password"
+          label="Re-Password"
           type="password"
+          color="yellow"
         />
-        <v-btn type="submit" color="success">
+        <v-btn type="submit" color="black" outlined>
           Register
         </v-btn>
         <v-card-subtitle>
           Have a account?
-          <nuxt-link tag="a" to="/login">
+          <nuxt-link tag="a" to="/login" style="color:pink">
             Login now?
           </nuxt-link>
         </v-card-subtitle>
@@ -67,5 +69,10 @@ export default {
 <style scoped>
 .card-form {
   margin: auto;
+   background-color: #00000000 !important;
+   border: 1px solid white;
+}
+.card-form button:hover {
+  background-color: rgb(251, 189, 199);
 }
 </style>
