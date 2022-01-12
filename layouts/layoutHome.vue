@@ -1,7 +1,7 @@
-
 <template>
   <v-app class="main">
     <v-main>
+      <intro />
       <nav-bar />
       <v-container>
         <Nuxt />
@@ -24,7 +24,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&display=swap');
-.main{
+.main {
   font-family: 'Open Sans', sans-serif;
   background-color: #ffffff;
 }

@@ -1,34 +1,37 @@
 <template>
-  <div class="ft">
-    <v-footer color="#ffff">
-      <v-form @submit.prevent="">
+  <v-footer color="#ffff">
+    <div class="ft">
+      <v-container>
         <v-row>
-          <v-col cols="6">
-            <v-text-field label="First Name" color="pink" />
+          <v-col>
+            <v-text-field label="First Name" color="pink" /> <v-spacer />
           </v-col>
-          <v-col cols="6">
+          <v-col>
             <v-text-field label="Last Name" color="pink" />
           </v-col>
         </v-row>
         <v-text-field label="Email *" color="pink" />
         <v-textarea placeholder="Message" no-resize rows="5" color="pink" />
-        <v-btn type="submit" width="250" height="100" color="pink" outlined>
+        <v-btn width="250" height="100" color="pink" class="submitButton" outlined>
           Subcribe
         </v-btn>
-      </v-form>
-    </v-footer>
-  </div>
+      </v-container>
+    </div>
+  </v-footer>
 </template>
 <style scoped>
-.ft{
-    border-block-start: 1px solid black;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.ft {
+  border-block-start: 1px solid black;
+  width: 100%;
+  text-align: center;
 }
-.ft form{
-    margin: 8rem ;
-    min-width: 800px;
-    text-align: center;
+@media (max-width: 575px) {
+
+}
+
+@media (min-width: 740px) {
+}
+
+@media screen and (min-width: 1024px) {
 }
 </style>

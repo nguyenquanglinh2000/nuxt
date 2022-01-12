@@ -1,11 +1,9 @@
 <template>
-  <!-- <v-card> -->
   <div class="nav_bar">
-    <intro />
-    <v-toolbar height="120" flat>
+    <v-toolbar height="120" class="nav_all" flat>
       <div class="nav">
         <ul>
-          <li style="border-left: 1px solid black;">
+          <li>
             <nuxt-link tag="a" to="/">
               Home
             </nuxt-link>
@@ -21,24 +19,32 @@
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link tag="a" to="/profile">
+            <nuxt-link tag="a" to="/#follow">
               Contact
             </nuxt-link>
           </li>
           <li>
-            <v-text-field placeholder="Search..." color="pink" prepend-icon="mdi-magnify" hide-details />
+            <v-text-field
+              placeholder="Search..."
+              color="pink"
+              prepend-icon="mdi-magnify"
+              hide-details
+              height="30"
+              class="my-2"
+            />
           </li>
-          <contact />
         </ul>
       </div>
     </v-toolbar>
-  <!-- </v-card> -->
   </div>
 </template>
+<script>
+export default {}
+</script>
 <style scoped>
-.nav{
-    min-width: 100%;
-    /* background: rgb(200, 200, 200); */
+.nav {
+  min-width: 100%;
+  /* background: rgb(200, 200, 200); */
 }
 ul {
   list-style-type: none;
@@ -48,6 +54,7 @@ ul {
 }
 li {
   display: inline-block;
+  border-left: 1px solid black;
   /* width: 120px; */
   /* height: 40px; */
   /* line-height: 40px; */
@@ -59,12 +66,39 @@ ul li a {
   display: block;
   font-size: 20px;
   padding: 10px 50px;
-  border-right: 1px solid black;
 }
 a:hover {
   color: mediumpurple;
 }
 a.nuxt-link-exact-active {
   color: mediumpurple;
+}
+/* @media (max-width: 1199px) {
+} */
+
+@media (max-width: 575px) {
+  .nav_bar .nav_all {
+    display: none;
+  }
+}
+
+@media (min-width: 740px) {
+  ul li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    font-size: 15px;
+    padding: 5px 25px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  ul li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    font-size: 20px;
+    padding: 10px 50px;
+  }
 }
 </style>
