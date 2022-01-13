@@ -3,16 +3,12 @@
     <v-app-bar fixed app>
       <div class="plus">
         <v-btn icon color="pink" tag="a" to="/admin/post/create-post">
-          <v-icon x-large>
-            mdi-plus
-          </v-icon>
+          <v-icon x-large> mdi-plus </v-icon>
         </v-btn>
       </div>
       <div class="star">
         <v-btn icon color="yellow" @click="favoriteList">
-          <v-icon x-large>
-            mdi-star
-          </v-icon>
+          <v-icon x-large> mdi-star </v-icon>
         </v-btn>
       </div>
 
@@ -42,9 +38,7 @@
             </v-list-item-title>
           </v-list-item>
           <v-list-item tag="a" @click="logout">
-            <v-icon color="red">
-              mdi-logout
-            </v-icon>
+            <v-icon color="red"> mdi-logout </v-icon>
             Logout
           </v-list-item>
         </v-list>
@@ -96,55 +90,58 @@
   </v-app>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 export default {
-  layout: 'admin',
-  middleware: 'auth',
-  data () {
+  layout: "admin",
+  middleware: "auth",
+  data() {
     return {
       drawer: true,
       items: [
         {
-          title: 'Dashboard',
-          icon: 'mdi-view-dashboard',
-          link: '/admin/dashboard'
+          title: "Dashboard",
+          icon: "mdi-view-dashboard",
+          link: "/admin/dashboard",
         },
-        { title: 'My Post', icon: 'mdi-post-outline', link: '/admin/post' }
+        { title: "My Post", icon: "mdi-post-outline", link: "/admin/post" },
         // { title: 'Users', icon: 'mdi-account-group-outline', link: '/admin/user' }
       ],
       menuDropDown: [
         {
-          title: 'Profile',
-          icon: 'mdi-account',
-          color: 'black',
-          to: '/admin/profile'
-        }
+          title: "Profile",
+          icon: "mdi-account",
+          color: "black",
+          to: "/admin/profile",
+        },
       ],
-      mini: true
-    }
+      mini: true,
+    };
   },
   computed: {
-    ...mapState('auth', ['emailAuth'])
+    ...mapState("auth", ["emailAuth"]),
   },
-  created () {
+  created() {
     // this.$store.dispatch('setTokenRoot')
-    this.$store.dispatch('post/get_data')
+    this.$store.dispatch("post/get_data");
+    // TODO: mapActions ?
   },
   methods: {
-    logout () {
+    logout() {
       // console.log(this.emailAuth)
     },
-    favoriteList () {}
-  }
-}
+    favoriteList() {},
+  },
+};
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&display=swap');
+/* TODO: define global fonts */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&display=swap");
+
 .main {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   background-color: rgb(230, 230, 230);
 }
 .bar a {

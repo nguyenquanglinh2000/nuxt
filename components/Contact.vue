@@ -1,11 +1,8 @@
 <template>
   <!-- <div class="contact_icon"> -->
+  // TODO: dùng class css vuetify
   <li
-    style="
-      border-right: 1px solid black;
-      padding: 10px 30px;
-      padding-top: 15px;
-    "
+    style="border-right: 1px solid black; padding: 10px 30px; padding-top: 15px"
     class="contact_icon"
   >
     <v-icon color="black" class="mx-1" tag="a" href="https://fb.com">
