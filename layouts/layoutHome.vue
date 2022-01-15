@@ -14,10 +14,7 @@
 </template>
 <script>
 export default {
-  created () {
-    this.$store.dispatch('post/get_data')
-    this.$store.dispatch('setTokenRoot')
-  }
+  middleware: 'getData'
 }
 </script>
 <style scoped>

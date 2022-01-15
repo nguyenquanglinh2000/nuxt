@@ -13,12 +13,7 @@
 
 <script>
 export default {
-  data () {
-    return {}
-  },
-  created () {
-    this.$store.dispatch('post/get_data')
-  }
+  middleware: 'getData'
 }
 </script>
 <style scoped>

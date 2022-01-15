@@ -1,5 +1,5 @@
 <template>
-  <div class="intro blog_intro_page">
+  <div class="blog_intro_page">
     <div class="nav_small">
       <v-row align="center">
         <v-col cols="10">
@@ -28,47 +28,49 @@
       </v-row>
     </div>
     <span>EVERYTHING IS PERSONAL. INCLUDING THIS BLOG.</span>
-    <br />
-    <nuxt-link to="/" tag="a"> Train of Thought </nuxt-link>
+    <br>
+    <nuxt-link to="/" tag="a">
+      Train of Thought
+    </nuxt-link>
   </div>
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       drawer: null,
-      items: [{ title: "Home" }, { title: "About" }],
-    };
-  },
-};
+      items: [{ title: 'Home' }, { title: 'About' }]
+    }
+  }
+}
 </script>
 <style scoped>
 /* // TODO: convention  */
-.blog-intro-page {
+.blog_intro_page {
   text-align: center;
   padding: 5%;
 }
-.intro a {
-  font-family: "Playfair Display", serif;
+.blog_intro_page a {
+  font-family: 'Playfair Display', serif;
   font-size: 116px;
   text-decoration: none;
   color: black;
 }
 span {
   font-size: 25px;
-  font-family: "Readex Pro", sans-serif;
+  font-family: 'Readex Pro', sans-serif;
   letter-spacing: 0.4em;
 }
 @media (max-width: 575px) {
-  .intro a {
-    font-family: "Playfair Display", serif;
+  .blog_intro_page a {
+    font-family: 'Playfair Display', serif;
     font-size: 80px;
     text-decoration: none;
     color: black;
   }
   span {
     font-size: 15px;
-    font-family: "Readex Pro", sans-serif;
+    font-family: 'Readex Pro', sans-serif;
     letter-spacing: 0.4em;
   }
 }
