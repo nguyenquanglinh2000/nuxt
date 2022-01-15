@@ -12,7 +12,7 @@
           />
         </v-col>
         <v-col cols="2">
-          <v-btn icon class="icon_menu" @click.stop="drawer = !drawer" x-large>
+          <v-btn icon class="icon_menu" x-large @click.stop="drawer = !drawer">
             <v-icon>mdi-menu</v-icon>
           </v-btn>
         </v-col>
