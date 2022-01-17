@@ -1,6 +1,6 @@
 <template>
   <v-footer color="#ffff">
-    <div class="ft">
+    <div class="blog_ft">
       <v-container>
         <v-row>
           <v-col>
@@ -20,7 +20,7 @@
   </v-footer>
 </template>
 <style scoped>
-.ft {
+.blog_ft {
   border-block-start: 1px solid black;
   width: 100%;
   text-align: center;

@@ -30,7 +30,7 @@
             <v-icon>mdi-menu-down</v-icon>
           </v-btn>
         </template>
-        <v-list class="bar">
+        <v-list class="blog_bar">
           <v-list-item v-for="(item, index) in menuDropDown" :key="index">
             <v-list-item-title>
               <v-icon :color="item.color">
@@ -88,7 +88,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-main class="main">
+    <v-main class="blog_main">
       <v-container>
         <Nuxt />
       </v-container>
@@ -142,15 +142,12 @@ export default {
 
 <style scoped>
 /* TODO: define global fonts */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&display=swap');
 
-.main {
+.blog_main {
   font-family: 'Open Sans', sans-serif;
   background-color: rgb(230, 230, 230);
 }
-.bar a {
+.blog_bar a {
   text-decoration: none;
   color: black;
 }

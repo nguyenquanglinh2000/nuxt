@@ -44,8 +44,9 @@ export default {
   }
 }
 </script>
+
 <style scoped>
-/* // TODO: convention  */
+
 .blog_intro_page {
   text-align: center;
   padding: 5%;

@@ -53,32 +53,54 @@ export const actions = {
       // }
     }
   },
-  get_data ({ commit }) {
-    // TODO: đã await thì không dùng .then, (sử dụng 100% async await)
-    this.$axios
-      .$get('https://blognuxt-886ad-default-rtdb.firebaseio.com/blogs.json')
-      .then((result) => {
-        const array = []
-        for (const key in result) {
-          // console.log(result[key].title)
-          // TODO: sai, làm lại login phần push, KHÔNG AI LÀM NHƯ KIA CẢ, ES6 đâu rồi ?
-          array.push({
-            title: result[key].title,
-            description: result[key].description,
-            image: result[key].image,
-            favorite: result[key].favorite,
-            author: result[key].author,
-            id: key
-          })
-        }
-        // console.log(array)
-        commit('UPDATE_LIST', array)
-        // console.log('get_data')
-      })
-      .catch((e) => {
-        // eslint-disable-next-line no-console
-        console.log(e)
-      })
+  async get_data ({ commit }) {
+    try {
+      const arr = await this.$axios.$get(
+        'https://blognuxt-886ad-default-rtdb.firebaseio.com/blogs.json'
+      )
+
+      // console.log(arr)
+      // => Trả về một obj
+      // {
+      //   key:{
+      //     value
+      //   }
+      // }
+
+      const temp = []
+      for (const id in arr) {
+        // console.log(arr[id])
+        // Trả về obj
+        temp.push({ id, ...arr[id] })
+      }
+      commit('UPDATE_LIST', temp)
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error)
+    }
+    // this.$axios
+    //   .$get('https://blognuxt-886ad-default-rtdb.firebaseio.com/blogs.json')
+    //   .then((result) => {
+    //     const array = []
+    //     for (const key in result) {
+    //       // console.log(result[key].title)
+    //       array.push({
+    //         title: result[key].title,
+    //         description: result[key].description,
+    //         image: result[key].image,
+    //         favorite: result[key].favorite,
+    //         author: result[key].author,
+    //         id: key
+    //       })
+    //     }
+    //     // console.log(array)
+    //     commit('UPDATE_LIST', array)
+    //     // console.log('get_data')
+    //   })
+    //   .catch((e) => {
+    //     // eslint-disable-next-line no-console
+    //     console.log(e)
+    //   })
   },
   async change_favorite ({ dispatch, rootState }, payload) {
     try {

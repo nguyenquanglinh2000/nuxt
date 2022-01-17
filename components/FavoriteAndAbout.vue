@@ -1,6 +1,6 @@
 <template>
-  <div class="listAndAbout">
-    <div class="list">
+  <div class="blog_listAndAbout">
+    <div class="blog_list">
       <v-container>
         <span>Blog Me</span>
         <div class="post mt-16">
@@ -130,12 +130,12 @@ export default {
 }
 </script>
 <style scoped>
-.listAndAbout {
+.blog_listAndAbout {
   width: 98%;
   display: flex;
   margin-top: 3rem;
 }
-.list {
+.blog_list {
   min-width: 60%;
   text-align: center;
 }
@@ -194,7 +194,7 @@ a:hover {
 }
 
 @media (max-width: 575px) {
-  .listAndAbout {
+  .blog_listAndAbout {
     display: block;
   }
   .post {
@@ -235,7 +235,7 @@ a:hover {
 }
 
 @media screen and (min-width: 1024px) {
-  .list {
+  .blog_list {
     min-width: 60%;
     text-align: center;
   }

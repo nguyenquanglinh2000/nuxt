@@ -1,8 +1,8 @@
 <template>
-  <v-app class="main">
+  <v-app class="blog_main">
     <v-main>
       <v-container>
-        <nuxt-logo class="logo" />
+        <nuxt-logo class="blog_logo" />
         <Nuxt />
       </v-container>
     </v-main>
@@ -10,11 +10,11 @@
 </template>
 
 <style scoped>
-.logo{
+.blog_logo{
     width: 100%;
     margin:auto
 }
-.main{
+.blog_main{
   background-image: url(https://wallpaperaccess.com/full/16676.jpg);
 }
 </style>

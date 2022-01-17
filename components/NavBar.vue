@@ -1,7 +1,7 @@
 <template>
-  <div class="nav_bar">
-    <v-toolbar height="120" class="nav_all" flat>
-      <div class="nav">
+  <div class="blog_nav_bar">
+    <v-toolbar height="120" class="blog_nav_all" flat>
+      <div class="blog_nav">
         <ul>
           <li>
             <nuxt-link tag="a" to="/">
@@ -42,7 +42,7 @@
 export default {}
 </script>
 <style scoped>
-.nav {
+.blog_nav {
   min-width: 100%;
   /* background: rgb(200, 200, 200); */
 }
@@ -77,7 +77,7 @@ a.nuxt-link-exact-active {
 } */
 
 @media (max-width: 575px) {
-  .nav_bar .nav_all {
+  .blog_nav_bar .blog_nav_all {
     display: none;
   }
 }

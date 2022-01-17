@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main class="main">
+    <v-main class="blog_main">
       <intro />
       <nav-bar />
       <v-container>
@@ -17,10 +17,8 @@ export default {
 }
 </script>
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&display=swap');
-.main {
+
+.blog_main {
   font-family: 'Open Sans', sans-serif;
   background-color: #ffffff;
 }

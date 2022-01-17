@@ -1,10 +1,10 @@
 <template>
-  <div class="subscribe">
-    <div class="text">
+  <div class="blog_subscribe">
+    <div class="blog_text">
       <span>Never Miss a New Post.</span>
     </div>
     <v-spacer />
-    <div class="sub">
+    <div class="blog_sub">
       <v-text-field placeholder="Subscribe" color="pink" label="Email" />
       <v-btn
         class="ml-16"
@@ -19,8 +19,8 @@
   </div>
 </template>
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-.subscribe {
+
+.blog_subscribe {
   /* text-align: center; */
   display: flex;
   justify-content: center;
@@ -37,31 +37,31 @@ span {
     width: 140px;
     height: 50px;
 } */
-.sub {
+.blog_sub {
   margin: 3rem 3rem;
   /* width: 500px; */
   display: flex;
   margin-right: 18%;
 }
-.text {
+.blog_text {
   margin: 3rem 3rem;
   margin-left: 18%;
 }
 
 @media (max-width: 575px) {
-  .sub {
+  .blog_sub {
     /* margin: 3rem 3rem; */
     /* width: 500px; */
     /* margin-right: 18%; */
     display: block;
 
   }
-  .text span {
+  .blog_text span {
     font-size: 25px;
     /* margin: 3rem 3rem; */
     /* margin-left: 18%; */
   }
-  .subscribe {
+  .blog_subscribe {
     display: block;
     max-width: 100%;
   }
@@ -71,11 +71,11 @@ span {
 }
 
 @media screen and (min-width: 1024px) {
-  .subscribe {
+  .blog_subscribe {
     display: block;
     /* text-align: center; */
   }
-  .sub {
+  .blog_sub {
     margin: auto;
   }
 }
