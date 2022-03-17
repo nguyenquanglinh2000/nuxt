@@ -74,7 +74,7 @@ export default {
       ) {
         this.messege = 'Please enter full information'
       } else {
-        this.$store.dispatch('create_blog', {
+        this.$store.dispatch('createBlog', {
           title: this.title,
           description: this.description,
           image: this.image,

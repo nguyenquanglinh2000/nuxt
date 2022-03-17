@@ -16,7 +16,7 @@
           v-if="item.favorite"
           color="yellow"
           icon
-          @click="change_favorite({ id: item.id, favorite: item.favorite })"
+          @click="changeFavorite({ id: item.id, favorite: item.favorite })"
         >
           <v-icon> mdi-star </v-icon>
         </v-btn>
@@ -24,7 +24,7 @@
           v-else
           icon
           :disabled="favoriteNum == 3"
-          @click="change_favorite({ id: item.id, favorite: item.favorite })"
+          @click="changeFavorite({ id: item.id, favorite: item.favorite })"
         >
           <v-icon> mdi-star </v-icon>
         </v-btn>
@@ -54,7 +54,7 @@
             </v-list-item>
           </v-list>
         </v-menu> -->
-        <v-btn icon color="red" @click="delete_data(item.id)">
+        <v-btn icon color="red" @click="deleteData(item.id)">
           <v-icon>mdi-delete</v-icon>
         </v-btn>
         <v-btn
@@ -102,7 +102,7 @@
           </v-card-text>
           <v-form
             @submit.prevent="
-              update_data({
+              updateData({
                 id: id,
                 title: title,
                 description: description,
@@ -191,7 +191,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('post', ['delete_data', 'update_data', 'change_favorite']),
+    ...mapActions('post', ['deleteData', 'updateData', 'changeFavorite']),
     handle (id) {
       // console.log(id)
       // if (id.id === 1) {
@@ -204,7 +204,7 @@ export default {
     }
   }
   // favoriteStar (id) {
-  //   this.$store.dispatch('change_favorite', id)
+  //   this.$store.dispatch('changeFavorite', id)
   // }
   // logOut () {
   //   this.$store.dispatch('logout')

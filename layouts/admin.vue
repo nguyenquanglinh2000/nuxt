@@ -126,12 +126,12 @@ export default {
     ...mapState('auth', ['emailAuth'])
   },
   created () {
-    // this.$store.dispatch('post/get_data')
+    // this.$store.dispatch('post/getData')
     // eslint-disable-next-line no-undef
-    // dispatch('get_data')
+    // dispatch('getData')
   },
   methods: {
-    ...mapActions('post', ['get_data']),
+    ...mapActions('post', ['getData']),
     logout () {
       // console.log(this.emailAuth)
     },

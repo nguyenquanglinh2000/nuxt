@@ -3,21 +3,21 @@ export const state = () => ({
 })
 
 export const actions = {
-  async create_blog ({ dispatch, rootState, $router }, payload) {
+  async createBlog ({ dispatch, rootState, $router }, payload) {
     try {
       await this.$axios.$post(
         'https://blognuxt-886ad-default-rtdb.firebaseio.com/blogs.json/?auth=' +
           rootState.auth.token,
         payload
       )
-      dispatch('get_data')
+      dispatch('getData')
       $router.push('/admin/post')
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log(error)
     }
   },
-  async delete_data ({ state, dispatch, rootState }, payload) {
+  async deleteData ({ state, dispatch, rootState }, payload) {
     // console.log(payload)
     try {
       await this.$axios.$delete(
@@ -26,13 +26,13 @@ export const actions = {
           '.json/?auth=' +
           rootState.auth.token
       )
-      dispatch('get_data')
+      dispatch('getData')
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log(error)
     }
   },
-  async update_data ({ dispatch, rootState }, payload) {
+  async updateData ({ dispatch, rootState }, payload) {
     try {
       await this.$axios.$patch(
         'https://blognuxt-886ad-default-rtdb.firebaseio.com/blogs/' +
@@ -45,7 +45,7 @@ export const actions = {
         // description: payload.description,
         // image: payload.image
       )
-      dispatch('get_data')
+      dispatch('getData')
     } catch (error) {
       // return {
       //   result: false,
@@ -53,16 +53,16 @@ export const actions = {
       // }
     }
   },
-  async get_data ({ commit }) {
+  async getData ({ commit }) {
     try {
       const arr = await this.$axios.$get(
         'https://blognuxt-886ad-default-rtdb.firebaseio.com/blogs.json'
       )
 
-      // console.log(arr)
-      // => Trả về một obj
+      console.log(arr)
+      // => return obj
       // {
-      //   key:{
+      //   id:{
       //     value
       //   }
       // }
@@ -95,14 +95,14 @@ export const actions = {
     //     }
     //     // console.log(array)
     //     commit('UPDATE_LIST', array)
-    //     // console.log('get_data')
+    //     // console.log('getData')
     //   })
     //   .catch((e) => {
     //     // eslint-disable-next-line no-console
     //     console.log(e)
     //   })
   },
-  async change_favorite ({ dispatch, rootState }, payload) {
+  async changeFavorite ({ dispatch, rootState }, payload) {
     try {
       await this.$axios.$patch(
         'https://blognuxt-886ad-default-rtdb.firebaseio.com/blogs/' +
@@ -113,7 +113,7 @@ export const actions = {
           favorite: !payload.favorite
         }
       )
-      dispatch('get_data')
+      dispatch('getData')
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log(error)

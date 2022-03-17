@@ -9,7 +9,7 @@
       </v-card-text>
       <v-form
         @submit.prevent="
-          create_blog({
+          createBlog({
             title,
             description,
             image,
@@ -80,7 +80,7 @@ export default {
     ...mapState('auth', ['emailAuth'])
   },
   methods: {
-    ...mapActions('post', ['create_blog'])
+    ...mapActions('post', ['createBlog'])
   }
 }
 </script>

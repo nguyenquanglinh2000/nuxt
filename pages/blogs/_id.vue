@@ -31,7 +31,7 @@ export default {
     }
   }
   // created () {
-  //   this.$store.dispatch('get_data')
+  //   this.$store.dispatch('getData')
   // }
 }
 </script>

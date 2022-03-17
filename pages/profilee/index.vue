@@ -95,7 +95,7 @@ export default {
     ...mapGetters(['blogAuth'])
   },
   created () {
-    this.$store.dispatch('get_data')
+    this.$store.dispatch('getData')
   },
   // watch: {
   //   dialog (newC, oldC) {
